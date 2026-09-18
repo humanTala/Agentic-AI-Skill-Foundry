@@ -1,0 +1,15 @@
+author: Tala Da'ana
+github: humanTala
+date: 2026-09-18
+
+category: productivity
+
+shape: method
+
+# Put what you actually ran it on
+tested_on: VS Code 
+
+requires:
+  - none
+
+source: original
