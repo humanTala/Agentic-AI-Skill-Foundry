@@ -1,70 +1,82 @@
-
 ---
 name: requirements-gap-check
 description: >
-  Use when the user provides or describes BOTH assignment requirements
-  (brief, instructions, rubric, specification, or checklist) AND their own
-  work, draft, submission, or implementation, and asks what they missed,
-  what they have not covered, what is still uncovered, what requirements are
-  missing, incomplete, partially satisfied, or unmet, or whether their work
-  covers the stated requirements. Typical requests include "what am I
-  missing?", "did I miss anything?", "what haven't I covered?", "what have
-  I not covered?", "what is still uncovered?", "which requirements are
-  missing?", and "does my work cover the requirements". Does NOT fire on
-  grading, scoring, or rubric evaluation; rewriting, improving, or
-  proofreading; explaining or summarizing a brief without the user's work;
-  or creating/writing missing assignment content.
+  Compare assignment requirements, specifications, briefs, or checklists against
+  the user's own work, submission, draft, or implementation. Identify what is
+  covered, partially covered, missing, or still impossible to verify. Does NOT
+  fire on: grading or scoring, rewriting or proofreading, explaining requirements
+  without the user's work, or creating missing assignment content.
 ---
 
 # Requirements Gap Check
 
-Compares assignment requirements with the user's own work and reports which
-requirements are met, partially covered, missing, or cannot be verified.
+Identify which stated assignment requirements are met, partially covered, missing, or cannot be verified by comparing the requirements against the user's own work.
 
 ## When to use this
 
 Fires when the user asks to:
 
-- identify what requirements they are missing from an assignment brief
-- compare their submission or implementation against stated requirements
-- find what they have not covered or what is still uncovered
+- identify what requirements they are missing from their assignment
+- check whether their work covers everything in the assignment brief
+- compare their submission, draft, or implementation against the requirements
+- find what they have not covered
 - identify requirements that are only partially satisfied
-- check whether their work covers the requirements in a brief or specification
+- determine what is still uncovered
 
-**Does NOT fire on:**
+*Does NOT fire on:*
 
-- grading, scoring, marking, or rubric evaluation — those are assessment tasks
-- rewriting or improving the user's work — those are editing tasks
-- explaining or summarizing an assignment brief without the user's work
-- proofreading for grammar or surface errors
-- writing missing sections, files, code, or other assignment content
+- grading, scoring, marking, or ranking an assignment
+- rewriting, improving, or proofreading the user's work
+- explaining or summarizing requirements without the user's work
+- creating missing assignment content, code, files, or sections
+- giving general assignment advice without comparing the requirements against the user's work
+
+Be specific about requirements coverage. Do not judge the overall quality of the work.
 
 ## Steps
 
-1. Identify the assignment requirements and the user's work.
-2. Extract the individual requirements from the brief without inventing new
-   requirements.
-3. Compare each requirement against the supplied work.
-4. Classify each requirement as Met, Partial, Missing, or Can't verify.
-5. Report the gaps first, followed by the requirements that are already met.
+1. Read the assignment requirements and identify each individual stated requirement.
+2. Read the user's work and identify evidence relevant to each requirement.
+3. Compare each requirement against the evidence in the user's work.
+4. Classify each requirement as **MET**, **PARTIAL**, **MISSING**, or **CAN'T VERIFY**.
+5. Report the requirements needing attention first.
+6. Report the requirements that are already met.
+7. Give a short evidence-based explanation for each classification.
+8. If only the requirements are provided, ask for the user's work.
+9. If only the user's work is provided, ask for the assignment requirements.
 
 ## Rules
 
-- Do not invent requirements that are not stated or reasonably implied by the
-  supplied brief.
-- Do not give grades, scores, rankings, or overall quality judgments.
-- Do not rewrite or create missing assignment content unless the user
-  separately asks for that after the gap analysis.
-- Do not claim that a requirement is satisfied without evidence in the
-  supplied work.
-- Distinguish Partial from Missing.
-- Distinguish Missing from Can't verify.
-- Report only what can be supported by the supplied requirements and work.
-- The deterministic gap-classification logic is implemented in
-  `scripts/requirements_gap_checker.py`.
+- Only use requirements that are stated or clearly specified in the supplied assignment material.
+- Never invent additional assignment requirements.
+- Base every classification on evidence in the user's supplied work.
+- Never assume that an unstated item is required.
+- Distinguish **PARTIAL** from **MISSING**.
+- Distinguish **MISSING** from **CAN'T VERIFY**.
+- Do not give grades, scores, rankings, or an overall quality judgment.
+- Do not rewrite or improve the user's work.
+- Do not create missing assignment content unless the user separately asks for it after the gap analysis.
+- Keep the analysis focused on requirements coverage rather than general feedback.
+- Report only conclusions supported by the supplied requirements and work.
+- Do not treat lack of evidence as proof that something does not exist. Use **CAN'T VERIFY** when the supplied material is insufficient.
+- Do not add requirements based on common academic expectations or assumptions.
 
-## Scripts
+## Output format
 
-| Script | What it does |
-|---|---|
-| `scripts/requirements_gap_checker.py` | Extracts requirements and compares them against the supplied submission using deterministic gap-detection logic. |
+### Requirements Gap Analysis
+
+| Requirement | Status | Evidence |
+|---|---|---|
+| Requirement from the assignment | MET / PARTIAL / MISSING / CAN'T VERIFY | Evidence from the user's work |
+
+### Gaps
+
+List the requirements that are **MISSING**, **PARTIAL**, or **CAN'T VERIFY**, with a short explanation of what evidence is missing or incomplete.
+
+### Covered Requirements
+
+List the requirements that are **MET**, with the evidence showing why they are covered.
+
+### Summary
+
+Give a concise summary of what remains uncovered without assigning a grade, score, ranking, or overall quality judgment.
